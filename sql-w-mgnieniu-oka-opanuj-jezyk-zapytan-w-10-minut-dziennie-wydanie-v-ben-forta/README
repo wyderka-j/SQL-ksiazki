@@ -23,8 +23,8 @@ Rozdział 3 Sortowanie pobranych danych
 
 Rozdział 4 Filtrowanie danych 
 *******************************************
-1. Napisz SQL-u instrukcję, która pobiera identyfikator (prdo)id) i nazwę produktu (prod_name) z tabeli Produkty oraz zwraca tylko produkty o cenie równej 12.99.
-2. Napisz SQL-u instrukcję, która pobiera identyfikator (prdo)id) i nazwę produktu (prod_name) z tabeli Produkty oraz zwraca tylko produkty o cenie równej 15
+1. Napisz SQL-u instrukcję, która pobiera identyfikator (prod_id) i nazwę produktu (prod_name) z tabeli Produkty oraz zwraca tylko produkty o cenie równej 12.99.
+2. Napisz SQL-u instrukcję, która pobiera identyfikator (prod_id) i nazwę produktu (prod_name) z tabeli Produkty oraz zwraca tylko produkty o cenie równej 15
   lub większej.
 3. Napisz SQL-u instrukcję, która pobiera z tabeli ElementyZamowienia unikatową listę numerów zamówień (za_numer) obejmujących przynajmniej 100 sztuk dowolnego 
   produktu.
