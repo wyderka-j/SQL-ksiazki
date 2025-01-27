@@ -45,3 +45,14 @@ Rozdział 5 Zaawansowane filtrowanie danych
         FROM Dostawcy
         ORDER BY dost_nazwa
         WHERE dost_kraj = 'Polska' AND dost_woj = 'MAZ';
+
+Rozdział 6 Filtrowanie za pomocą znaków wieloznacznych
+*******************************************************
+1. Napisz SQL-u instrukcję, która pobiera nazwę (prod_nazwa) i opis (prod_opis) z tabeli Produkty oraz zwraca tylko te produkty, w których 
+  opisie występuje słowo 'szmacianka'.
+2. Napisz SQL-u instrukcję, która pobiera nazwę (prod_nazwa) i opis (prod_opis) z tabeli Produkty oraz zwraca tylko te produkty, w których 
+  opisie nie występuje słowo 'szmacianka'. Posortuj wyniki według nazw produktów.
+3. Napisz SQL-u instrukcję, która pobiera nazwę (prod_nazwa) i opis (prod_opis) z tabeli Produkty oraz zwraca tylko te produkty, w których 
+  opisie występują jednocześnie słowa 'szmacianka' i 'Rybka'. Zastosuj operator AND i dwa porówniania LIKE.
+4. Napisz SQL-u instrukcję, która pobiera nazwę (prod_nazwa) i opis (prod_opis) z tabeli Produkty oraz zwraca tylko te produkty, w których 
+  opisie występują słowa 'Rybka' i 'szmacianka' w takiej właśnie kolejności.
