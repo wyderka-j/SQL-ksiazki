@@ -66,3 +66,33 @@ SELECT prod_nazwa, prod_cena
 FROM Produkty
 WHERE prod_cena BETWEEN 20 AND 40
 ORDER BY prod_cena;
+
+-- *******************************************
+-- Rozdział 5 Zaawansowane filtrowanie danych
+-- *******************************************
+-- 1. Napisz SQL-u instrukcję, która pobiera z tabeli Dostawcy nazwę dostawcy (dost_nazwa) i zwraca tylko dostawców z województwa mazowieckiego.
+-- Wymaga to filtrowania danych zarówno według państwa jak i województwa MAZ.
+SELECT dost_nazwa
+FROM DOstawcy
+WHERE dost_kraj = 'Polska' AND dost_woj = 'MAZ';
+-- 2. Napisz SQL-u instrukcję, która znajduje wszystkie zamówienia obejmujące przynajmniej 100 sztuk produktu BR01, BR02 lun BR03. 
+-- Należy zwrócić numer zamówienia (zam_numer), idektyfikator produktu (prod_id) i liczbę sztuk (ilosc) w tabeli ElementyZamowienia.
+SELECT zam_numer, prod_id, ilosc
+FROM ElementyZamowienia
+WHERE prod_id IN (BR01, BR02, BR03) AND ilosc >= 100;
+-- rozwiazanie 2
+SELECT zam_numer, prod_id, ilosc
+FROM ElementyZamowienia
+WHERE (prod_id = 'BR01' OR prod_id = 'BR02' OR prod_id = 'BR03') AND ilosc >= 100;
+-- 3. Napisz SQL-u instrukcję, która pobiera z tabeli Produkty nazwę (prod_nazwa) i cenę (prod_cena) wszystkich produktów o cenie z przedziału
+-- od 20 do 40. Użyj operatora AND i posortuj wyniki według ceny.
+SELECT prod_nazwa, prod_cena
+FROM Produkty
+WHERE prod_cena >= 20 AND prod_cena <= 40
+ORDER BY prod_cena;
+-- 4. Jaki błąd znajduje się w poniższej intrukcji?
+     /* SELECT dost_nazwa
+        FROM Dostawcy
+        ORDER BY dost_nazwa
+        WHERE dost_kraj = 'Polska' AND dost_woj = 'MAZ'; */
+-- Klauzula ORDER BY musi znajdować się po klauzuli WHERE.
