@@ -41,3 +41,28 @@ ORDER BY ilosc DESC, prod_cena DESC;
          FROM Dostawcy
          Order dost_nazwa DESC;  */
 -- Po nazwie dost_nazwa nie powinno być przecinka. Ponadto po ORDER brakuje słowa BY.
+
+-- ****************************************
+-- Rozdział 4 Filtrowanie danych 
+-- ****************************************
+-- 1. Napisz SQL-u instrukcję, która pobiera identyfikator (prod_id) i nazwę produktu (prod_name) z tabeli Produkty oraz zwraca tylko produkty
+--    o cenie równej 12.99.
+SELECT prod_id, prod_nazwa
+FROM Produkty
+WHERE prod_cena = 12.99;
+-- 2. Napisz SQL-u instrukcję, która pobiera identyfikator (prod_id) i nazwę produktu (prod_name) z tabeli Produkty oraz zwraca tylko produkty
+--    o cenie równej 15 lub większej.
+SELECT prod_id, prod_nazwa
+FROM Produkty
+WHERE prod_cena >= 15;
+-- 3. Napisz SQL-u instrukcję, która pobiera z tabeli ElementyZamowienia unikatową listę numerów zamówień (za_numer) obejmujących przynajmniej 
+--    100 sztuk dowolnego produktu.
+SELECT DISTINCT zam_numer
+FROM ElementyZamowienia
+WHERE ilosc >= 100;
+-- 4. Napisz SQL-u instrukcję, która pobiera z tabeli Produkty nazwę (prod_nazwa) i cenę (prod_cena) wszystkich produktów o cenie z przedziału
+--    od 20 do 40. Posortuj wyniki według ceny.
+SELECT prod_nazwa, prod_cena
+FROM Produkty
+WHERE prod_cena BETWEEN 20 AND 40
+ORDER BY prod_cena;
