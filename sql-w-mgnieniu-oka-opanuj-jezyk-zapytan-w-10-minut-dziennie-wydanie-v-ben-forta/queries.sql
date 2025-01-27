@@ -121,3 +121,17 @@ WHERE prod_opis LIKE '%szmacianka%' AND prod_opis LIKE '%Rybka%';
 SELECT prod_nazwa, prod_opis
 FROM Produkty
 WHERE prod_opis LIKE '%Rybka%szmacianka%';
+
+-- ****************************************
+--   Rozdział 7 Tworzenie pól obliczanych   
+-- ****************************************
+
+-- 1. Napisz SQL-u instrukcję, która pobiera z tabeli Dostawcy pola dost_id, dost_nazwa, dost_adres i dost_miasto. Nazwę pola dost_nazwa zmień
+-- na dnazwa, dost_masto na dmiasto, a dost_adres na dadres. Posortuj według nazw dostawcóœ.
+SELECT dost_id, dost_nazwa AS dnazwa, dost_adres AS dadres, dost_miasto AS dmiasto
+FROM Dostawcy
+ORDER BY dnazwa;
+-- 2. Napisz SQL-u instrukcję, która zwraca pola prod_id, prod_cena i cena_wyprz z tabeli Produkty. Pole cena_wyprz jest polem obliczanym zawierającym
+-- cenę wyprzzzedażową (rabat 10%).
+SELECT prod_id, prod_cena, prod_cena * 0.9 AS cena_wyprz
+FROM Produkty;
