@@ -63,3 +63,10 @@ Rozdział 7 Tworzenie pól obliczanych
   na dnazwa, dost_masto na dmiasto, a dost_adres na dadres. Posortuj według nazw dostawcóœ.
 2. Napisz SQL-u instrukcję, która zwraca pola prod_id, prod_cena i cena_wyprz z tabeli Produkty. Pole cena_wyprz jest polem obliczanym zawierającym
   cenę wyprzedażową (rabat 10%).
+
+Rozdział 8 Modyfikacja danych za pomocą funkcji 
+***************************************************
+1. Napisz SQL-u instrukcję, która zwraca identyfikator klienta (kl_id), nazwę klienta (kl_nazwa) i login (uxyt_login). Login ma składać się z wielkich
+  liter i zawierać dwa pierwsze znaki danych kontaktowych klienta (kl_kontakt) i trzy pierwsze znaki miasta (kl_miasto).
+2. Napisz SQL-u instrukcję, która zwraca numer (zam_numer) i datę (zam_data) wszystkich zamówień złożonych w styczniu 2020 roku.
+  Dane mają być posortowane według daty zamówienia.
