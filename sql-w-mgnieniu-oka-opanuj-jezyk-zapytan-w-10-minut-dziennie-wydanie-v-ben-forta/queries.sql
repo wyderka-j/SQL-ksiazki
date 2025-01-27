@@ -135,3 +135,18 @@ ORDER BY dnazwa;
 -- cenę wyprzzzedażową (rabat 10%).
 SELECT prod_id, prod_cena, prod_cena * 0.9 AS cena_wyprz
 FROM Produkty;
+
+-- ***************************************************
+--   Rozdział 8 Modyfikacja danych za pomocą funkcji 
+-- ***************************************************
+
+-- 1. Napisz SQL-u instrukcję, która zwraca identyfikator klienta (kl_id), nazwę klienta (kl_nazwa) i login (uxyt_login). Login ma składać się z wielkich
+-- liter i zawierać dwa pierwsze znaki danych kontaktowych klienta (kl_kontakt) i trzy pierwsze znaki miasta (kl_miasto).
+SELECT kl_id, kl_nazwa, CONCAT(UPPER(LEFT(Kl_kontakt, 2)), UPPER(LEFT(Kl_miasto, 3))) AS uzyt_login
+FROM Klienci;
+-- 2. Napisz SQL-u instrukcję, która zwraca numer (zam_numer) i datę (zam_data) wszystkich zamówień złożonych w styczniu 2020 roku.
+-- Dane mają być posortowane według daty zamówienia.
+SELECT zam_numer, zam_data
+FROM Zamowienia
+WHERE YEAR(zam_data) = 2020 AND MONTH(zam_data) = 1
+ORDER BY zam_data;
