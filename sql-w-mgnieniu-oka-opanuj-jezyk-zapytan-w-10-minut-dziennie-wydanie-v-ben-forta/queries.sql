@@ -96,3 +96,28 @@ ORDER BY prod_cena;
         ORDER BY dost_nazwa
         WHERE dost_kraj = 'Polska' AND dost_woj = 'MAZ'; */
 -- Klauzula ORDER BY musi znajdować się po klauzuli WHERE.
+
+-- *******************************************************
+-- Rozdział 6 Filtrowanie za pomocą znaków wieloznacznych
+-- *******************************************************
+-- 1. Napisz SQL-u instrukcję, która pobiera nazwę (prod_nazwa) i opis (prod_opis) z tabeli Produkty oraz zwraca tylko te produkty, w których 
+--  opisie występuje słowo 'szmacianka'.
+SELECT prod_nazwa, prod_opis
+FROM Produkty
+WHERE prod_opis LIKE '%szmacianka%';
+-- 2. Napisz SQL-u instrukcję, która pobiera nazwę (prod_nazwa) i opis (prod_opis) z tabeli Produkty oraz zwraca tylko te produkty, w których 
+--  opisie nie występuje słowo 'szmacianka'. Posortuj wyniki według nazw produktów.
+SELECT prod_nazwa, prod_opis
+FROM Produkty
+WHERE NOT prod_opis LIKE '%szmacianka%'
+ORDER BY prod_nazwa;
+-- 3. Napisz SQL-u instrukcję, która pobiera nazwę (prod_nazwa) i opis (prod_opis) z tabeli Produkty oraz zwraca tylko te produkty, w których 
+--  opisie występują jednocześnie słowa 'szmacianka' i 'Rybka'. Zastosuj operator AND i dwa porówniania LIKE.
+SELECT prod_nazwa, prod_opis
+FROM Produkty
+WHERE prod_opis LIKE '%szmacianka%' AND prod_opis LIKE '%Rybka%';
+-- 4. Napisz SQL-u instrukcję, która pobiera nazwę (prod_nazwa) i opis (prod_opis) z tabeli Produkty oraz zwraca tylko te produkty, w których 
+--  opisie występują słowa 'Rybka' i 'szmacianka' w takiej właśnie kolejności.
+SELECT prod_nazwa, prod_opis
+FROM Produkty
+WHERE prod_opis LIKE '%Rybka%szmacianka%';
