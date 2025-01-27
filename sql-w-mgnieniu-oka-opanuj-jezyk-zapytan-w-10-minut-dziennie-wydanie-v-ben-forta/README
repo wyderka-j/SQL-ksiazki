@@ -60,6 +60,6 @@ Rozdział 6 Filtrowanie za pomocą znaków wieloznacznych
 Rozdział 7 Tworzenie pól obliczanych   
 ****************************************
 1. Napisz SQL-u instrukcję, która pobiera z tabeli Dostawcy pola dost_id, dost_nazwa, dost_adres i dost_miasto. Nazwę pola dost_nazwa zmień
-  na dnazwa, dosr)masto na dmiasto, a dost_adres na dadres. Posortuj według nazw dostawcóœ.
+  na dnazwa, dost_masto na dmiasto, a dost_adres na dadres. Posortuj według nazw dostawcóœ.
 2. Napisz SQL-u instrukcję, która zwraca pola prod_id, prod_cena i cena_wyprz z tabeli Produkty. Pole cena_wyprz jest polem obliczanym zawierającym
   cenę wyprzedażową (rabat 10%).
