@@ -70,3 +70,10 @@ Rozdział 8 Modyfikacja danych za pomocą funkcji
   liter i zawierać dwa pierwsze znaki danych kontaktowych klienta (kl_kontakt) i trzy pierwsze znaki miasta (kl_miasto).
 2. Napisz SQL-u instrukcję, która zwraca numer (zam_numer) i datę (zam_data) wszystkich zamówień złożonych w styczniu 2020 roku.
   Dane mają być posortowane według daty zamówienia.
+
+Rozdział 9 Funkcje agregujące 
+****************************************
+1. Napisz SQL-u instrukcję,aby ustalić łączną liczbę sprzedanych produktów (użyj kolumny ilosc z tabeli ElementyZamowienia).
+2. Zmodyfikuj instrukcję z zadania 1, aby ustalić łączną liczbę sprzedanych produktów (prdo_id) BR01.
+3. Napisz SQL-u instrukcję,aby ustalić cenę (prod_cena) najdroższego produktu z tabeli Produkty, który kosztuje nie więcej niż 10.
+  Obliczone pole nazwij cana_max.
