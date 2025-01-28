@@ -205,3 +205,47 @@ ORDER BY zam_numer;
             HAVING COUNT(*) >= 3
             ORDER BY elementy, zam_muner;     */
 -- Klauzula GROUP BY elementy jest nieprawidłowa. W klauzuli GROUP BY trzeba użyć zwykłej kolumny, a nie kolumny używanej w agregacji.
+
+-- ****************************************
+--   Rozdział 11 Zapytania zagnieżdżone  
+-- ****************************************
+
+-- 1. Używając zapytania zagnieżdżonego, zwróć listę klientów, którzy kupili produkty o cenie 10 lub wyższej. Użyj tabeli ElementyZamowienia
+-- aby znaleźć odpowiednie numery zamówień (zam_numer), a następnie tabeli Zamowienia, by pobrać identyfikatory klientów (kl_id).
+SELECT kl_id
+FROM Zamowienia
+WHERE zam_numer IN (SELECT zam_numer
+                    FROM ElementyZamowienia
+                    WHERE pcena_elem >= 10);
+-- 2. Napisz intrukcję z zapytaniem zagnieżdżonym, aby określić, w których zamówieniach (z tabeli ElementyZamowienia) znalazły się 
+-- elementy o identyfikatorze (prod_id) BR01. Następnie zwróć identyfikator klienta (kl_id) i datę zamówienia (zam_data) dla każdego
+-- takiego zamówienia  z tabeli Zamówienia. Wynik posortuj według daty zamówienia.
+SELECT kl_id, zam_data
+FROM Zamowienia
+WHERE zam_numer IN (SELECT zam_numer
+                    FROM ElementyZamowienia
+                    WHERE prod_id = 'BR01')
+ORDER BY zam_data;
+-- 3. Zmień poprzednie zadanie tak ,aby instrukcja zwracała e-maile (kl_email z tabeli Klienci) wszystkich klientów, którzy zakupili produkty
+-- o identyfikatorze (prod_id) BR01.
+SELECT kl_email
+FROM Klienci
+WHERE kl_id IN (SELECT kl_id
+               FROM Zamowienia
+               WHERE zam_numer IN (SELECT zam_numer
+                              FROM ElementyZamowienia
+                              WHERE prod_id = 'BR01'));
+-- 4. Napisz instrukcję, która zwraca identyfikator klienta (kl_id z tabeli Zamowienia) i wartość wartosc_zam. Użyj zapytania zagnieżdżonego
+-- aby zwrócić sumę wartości zamówień każdego klienta. Posortuj wyniki według wydatków poszczególnych klientów (od najwyższych do najniższych).
+SELECT kl_id, 
+     (SELECT SUM(cena_elem*ilosc) FROM ElementyZamowienia 
+     WHERE Zamowienia.zam_numer = ElementyZamowienia.zam_numer) AS wartosc_zam
+FROM Zamowienia
+ORDER BY wartosc_zam DESC;
+-- 5. Napisz instrukcję, która pobiera z tabeli Produkty wszystkie nazwy produktów (prod_nazwa), a także obliczoną kolumnę o nazwie sprzedano_sztuk
+-- zawierającą łączną liczbę sprzedanych sztuk każdego produktu. Tę liczbę pobierz za pomocą zapytania zagnieżdżonego i funkcji SUM(ilosc) z tabeli
+-- ElementyZamowienia.
+SELECT prod_nazwa,
+     (SELECT SUM(ilosc) FROM ElementyZamowienia
+     WHERE Produkty.prod_id = ElementyZamowienia.prod_id) AS sprzedano_sztuk
+FROM Produkty;
