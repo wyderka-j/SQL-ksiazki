@@ -167,3 +167,41 @@ FROM ElementyZamowienia
 SELECT MAX(prod_cena) AS cena_max
 FROM Produkty
 WHERE prod_cena <= 10;
+
+-- ****************************************
+--   Rozdział 10 Grupowanie danych  
+-- ****************************************
+
+-- 1. Napisz SQL-u instrukcję, która zwraca liczbę pozycji (jako pole zam_pozycje) dla każdego numeru zamówienia (zam_numer).
+-- Posortuj wyniku według pola zam_pozycje.
+SELECT zam_numer, COUNT(*) AS zam_pozycje
+FROM ElementyZamowienia
+GROUP BY zam_numer
+ORDER BY zam_pozycje;
+-- 2. Napisz SQL-u instrukcję, która zwraca pole o nazwie najtanszy_prod, zawierające najtańszy produkt od każdego producenta
+-- (użyj pola prod_cena z tabeli Produkty). Posortuj produkty od najtańszego do najdroższego.
+SELECT dost_id, MIN(prod_cena) AS najtanszy_prod
+FROM Produkty
+GROUP BY dost_id
+ORDER BY najtanszy_prod;
+-- 3. Napisz SQL-u instrukcję, która zwraca numery (zam_numer z tabeli ElementyZamowienia) wszystkich zamówień obejmujących
+-- przynajmniej 100 elementów.
+SELECT zam_numer
+FROM ElementyZamowienia
+GROUP BY zam_numer
+HAVING SUM(ilosc) >= 100
+ORDER BY zam_num;
+-- 4. Napisz SQL-u instrukcję, która zwraca numery (zam_numer z tabeli ElementyZamowienia) wszystkich zamówień, w których łączna
+-- cena wyniosła przynajmniej 1000. Posortuj według numerów zamówień.
+SELECT zam_numer, SUM(cena_elem * ilosc) AS cena_w_sumie
+FROM ElementyZamowienia
+GROUP BY zam_numer
+HAVING SUM(cena_elem * ilosc) >= 1000
+ORDER BY zam_numer;
+-- 5. Jaki błąd znajduje się w poniższej instrukcji SQL?
+     /*     SELECT zam_numer, COUNT(*) AS elementy
+            FROM ElementyZamowienia
+            GROUP BY elementy
+            HAVING COUNT(*) >= 3
+            ORDER BY elementy, zam_muner;     */
+-- Klauzula GROUP BY elementy jest nieprawidłowa. W klauzuli GROUP BY trzeba użyć zwykłej kolumny, a nie kolumny używanej w agregacji.
