@@ -74,6 +74,23 @@ Rozdział 8 Modyfikacja danych za pomocą funkcji
 Rozdział 9 Funkcje agregujące 
 ****************************************
 1. Napisz SQL-u instrukcję,aby ustalić łączną liczbę sprzedanych produktów (użyj kolumny ilosc z tabeli ElementyZamowienia).
-2. Zmodyfikuj instrukcję z zadania 1, aby ustalić łączną liczbę sprzedanych produktów (prdo_id) BR01.
+2. Zmodyfikuj instrukcję z zadania 1, aby ustalić łączną liczbę sprzedanych produktów (prod_id) BR01.
 3. Napisz SQL-u instrukcję,aby ustalić cenę (prod_cena) najdroższego produktu z tabeli Produkty, który kosztuje nie więcej niż 10.
   Obliczone pole nazwij cena_max.
+
+Rozdział 10 Grupowanie danych  
+****************************************
+1. Napisz SQL-u instrukcję, która zwraca liczbę pozycji (jako pole zam_pozycje) dla każdego numeru zamówienia (zam_numer).
+  Posortuj wyniku według pola zam_pozycje.
+2. Napisz SQL-u instrukcję, która zwraca pole o nazwie najtanszy_prod, zawierające najtańszy produkt od każdego producenta
+  (użyj pola prod_cena z tabeli Produkty). Posortuj produkty od najtańszego do najdroższego.
+3. Napisz SQL-u instrukcję, która zwraca numery (zam_numer z tabeli ElementyZamowienia) wszystkich zamówień obejmujących
+  przynajmniej 100 elementów.
+4. Napisz SQL-u instrukcję, która zwraca numery (zam_numer z tabeli ElementyZamowienia) wszystkich zamówień, w których łączna
+  cena wyniosła przynajmniej 1000. Posortuj według numerów zamówień.
+5. Jaki błąd znajduje się w poniższej instrukcji SQL?
+            SELECT zam_numer, COUNT(*) AS elementy
+            FROM ElementyZamowienia
+            GROUP BY elementy
+            HAVING COUNT(*) >= 3
+            ORDER BY elementy, zam_muner;     
