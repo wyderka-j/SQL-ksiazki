@@ -94,3 +94,18 @@ Rozdział 10 Grupowanie danych
             GROUP BY elementy
             HAVING COUNT(*) >= 3
             ORDER BY elementy, zam_muner;     
+
+Rozdział 11 Zapytania zagnieżdżone  
+****************************************
+1. Używając zapytania zagnieżdżonego, zwróć listę klientów, którzy kupili produkty o cenie 10 lub wyższej. Użyj tabeli ElementyZamowienia
+  aby znaleźć odpowiednie numery zamówień (zam_numer), a następnie tabeli Zamowienia, by pobrać identyfikatory klientów (kl_id).
+2. Napisz intrukcję z zapytaniem zagnieżdżonym, aby określić, w których zamówieniach (z tabeli ElementyZamowienia) znalazły się 
+  elementy o identyfikatorze (prod_id) BR01. Następnie zwróć identyfikator klienta (kl_id) i datę zamówienia (zam_data) dla każdego
+  takiego zamówienia  z tabeli Zamówienia. Wynik posortuj według daty zamówienia.
+3. Zmień poprzednie zadanie tak ,aby instrukcja zwracała e-maile (kl_email z tabeli Klienci) wszystkich klientów, którzy zakupili produkty
+  o identyfikatorze (prod_id) BR01.
+4. Napisz instrukcję, która zwraca identyfikator klienta (kl_id z tabeli Zamowienia) i wartość wartosc_zam. Użyj zapytania zagnieżdżonego
+  aby zwrócić sumę wartości zamówień każdego klienta. Posortuj wyniki według wydatków poszczególnych klientów (od najwyższych do najniższych).
+5. Napisz instrukcję, która pobiera z tabeli Produkty wszystkie nazwy produktów (prod_nazwa), a także obliczoną kolumnę o nazwie sprzedano_sztuk
+  zawierającą łączną liczbę sprzedanych sztuk każdego produktu. Tę liczbę pobierz za pomocą zapytania zagnieżdżonego i funkcji SUM(ilosc) z tabeli
+  ElementyZamowienia.
