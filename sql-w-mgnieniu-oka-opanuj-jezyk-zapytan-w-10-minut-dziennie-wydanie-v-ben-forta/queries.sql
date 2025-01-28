@@ -150,3 +150,20 @@ SELECT zam_numer, zam_data
 FROM Zamowienia
 WHERE YEAR(zam_data) = 2020 AND MONTH(zam_data) = 1
 ORDER BY zam_data;
+
+-- ****************************************
+--   Rozdział 9 Funkcje agregujące 
+-- ****************************************
+
+-- 1. Napisz SQL-u instrukcję,aby ustalić łączną liczbę sprzedanych produktów (użyj kolumny ilosc z tabeli ElementyZamowienia).
+SELECT SUM(ilosc) AS zamowione_produkty
+FROM ElementyZamowienia;
+-- 2. Zmodyfikuj instrukcję z zadania 1, aby ustalić łączną liczbę sprzedanych produktów (prod_id) BR01.
+SELECT SUM(ilosc) AS zamowione_produkty
+FROM ElementyZamowienia
+ WHERE prod_id = 'BR01';
+-- 3. Napisz SQL-u instrukcję,aby ustalić cenę (prod_cena) najdroższego produktu z tabeli Produkty, który kosztuje nie więcej niż 10.
+-- Obliczone pole nazwij cena_max.
+SELECT MAX(prod_cena) AS cena_max
+FROM Produkty
+WHERE prod_cena <= 10;
