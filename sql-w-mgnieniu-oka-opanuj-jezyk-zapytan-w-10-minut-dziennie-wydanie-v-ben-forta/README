@@ -109,3 +109,15 @@ Rozdział 11 Zapytania zagnieżdżone
 5. Napisz instrukcję, która pobiera z tabeli Produkty wszystkie nazwy produktów (prod_nazwa), a także obliczoną kolumnę o nazwie sprzedano_sztuk
   zawierającą łączną liczbę sprzedanych sztuk każdego produktu. Tę liczbę pobierz za pomocą zapytania zagnieżdżonego i funkcji SUM(ilosc) z tabeli
   ElementyZamowienia.
+
+Rozdział 12 Złączanie tabel  
+****************************************
+1. Napisz instrukcję, która zwraca nazwę klienta (kl_nazwa) z tabeli Klienci i numery powiązanych zamówień (zam_numer) z tabeli Zamowienia.
+  Wyniki posortuj najpierw według nazw klientów, a następnie według numerów zamówień. Wykonaj to zadanie dwuktrotnie - raz z użyciem prostej
+  składni złączeń wewnętrznyvh i raz za pomocą składni INNER JOIN.
+2. Do zadania pierwszego dodaj trzecią kolumnę, wartosc_zam, zawierającą łączną wartość każdego zamówienia.
+3. Napisz instrukcję, która pobiera daty zamówienia produktu BR01. Użyj złączenia i prostej składni złączeń wewnętrznych.
+4. Napisz instrukcje zwracającą e-maile (kl_email z tabeli Klienci) wszystkich klientów, którzy zakupili produkty o identyfikatorze 
+  (prod_id) BR01. Użyj składni ANSI INNER JOIN.
+5. Napisz instrukcję, która za pomocą złączeń zwraca nazwy klientów (kl_nazwa) z tabeli Klienci i wartości ich zamówień z tabeli
+  ElementyZamowienia, dla zamówień o wartości równej 1000 lub więcej.
