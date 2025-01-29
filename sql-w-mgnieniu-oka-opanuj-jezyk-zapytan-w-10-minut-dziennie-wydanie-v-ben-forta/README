@@ -125,7 +125,7 @@ Rozdział 12 Złączanie tabel
 Rozdział 13 Tworzenie zaawansowanych złączeń 
 ************************************************
 1. Napisz instrukcję ze złączeniem INNER JOIN aby pobrać nazwy klientów (kl_nazwa z tabeli Klienci) i wszystkie numery zamówień (zam_numer 
-  z tabeli Zamowienia) każdefo klienta.
+  z tabeli Zamowienia) każdego klienta.
 2. Zmodyfikuj zadanie 1 tak, aby wyświetlała nazwy klientów (nawet tych którzy nie złożyli żadnych zamówień).
 3. Użyj złączenia OUTER JOIN, aby złączyć tabele Produkty i ElementyZamowienia, instrukcja ma zwracać posortowaną listę nawz produktów
   (prod_nazwa) i numerów zamówień (zam_numer) powiązanych z każdym zamówieniem.
