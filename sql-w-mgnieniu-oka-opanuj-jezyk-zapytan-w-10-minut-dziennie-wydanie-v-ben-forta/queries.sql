@@ -313,3 +313,36 @@ INNER JOIN ElementyZamowienia ON Zamowienia.zam_numer = ElementyZamowienia.zam_n
 GROUP BY kl_nazwa
 HAVING  SUM(cena_elem*ilosc) >= 1000
 ORDER BY kl_nazwa;
+
+-- ************************************************
+--   Rozdział 13 Tworzenie zaawansowanych złączeń 
+-- ************************************************
+
+-- 1. Napisz instrukcję ze złączeniem INNER JOIN aby pobrać nazwy klientów (kl_nazwa z tabeli Klienci) i wszystkie numery zamówień (zam_numer 
+-- z tabeli Zamowienia) każdego klienta.
+SELECT kl_nazwa, zam_numer
+FROM Klienci k
+INNER JOIN Zamowienia z ON k.kl_id = z.kl_id
+ORDER BY  kl_nazwa;
+-- 2. Zmodyfikuj zadanie 1 tak, aby wyświetlała nazwy klientów (nawet tych którzy nie złożyli żadnych zamówień).
+SELECT kl_nazwa, zam_numer
+FROM Klienci k
+LEFT OUTER JOIN Zamowienia z ON k.kl_id = z.kl_id
+ORDER BY  kl_nazwa;
+-- 3. Użyj złączenia OUTER JOIN, aby złączyć tabele Produkty i ElementyZamowienia, instrukcja ma zwracać posortowaną listę nazw produktów
+-- (prod_nazwa) i numerów zamówień (zam_numer) powiązanych z każdym zamówieniem.
+SELECT prod_nazwa, zam_numer
+FROM Produkty p
+LEFT OUTER JOIN ElementyZamowienia e ON p.prod_id = e.prod_id
+ORDER BY prod_nazwa;
+-- 4. Zmodyfikuj instrukcję z zadania 3 tak, aby zwracała łączną liczbę zamówień każdego produktu (zamiast numerów zamówień).
+SELECT prod_nazwa, COUNT(zam_numer) AS liczba_zam
+FROM Produkty p
+LEFT OUTER JOIN ElementyZamowienia e ON p.prod_id = e.prod_id
+GROUP BY prod_nazwa
+ORDER BY prod_nazwa;
+-- 5. Napisz instrukcję która wyświetla dostawców (dost_id z tabeli Dostawcy) i liczbę produktów oferowanych przez każdego z nich. Należy także
+-- pokazać dostawców, którzy nie oferują żadnych produktów.
+SELECT d.dost_id, COUNT(prod_id)
+FROM Dostawcy d
+LEFT OUTER JOIN Produkty p ON d.dost_id = p.dost_id;
