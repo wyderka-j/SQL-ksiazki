@@ -249,3 +249,67 @@ SELECT prod_nazwa,
      (SELECT SUM(ilosc) FROM ElementyZamowienia
      WHERE Produkty.prod_id = ElementyZamowienia.prod_id) AS sprzedano_sztuk
 FROM Produkty;
+
+-- ****************************************
+--   Rozdział 12 Złączanie tabel  
+-- ****************************************
+
+-- 1. Napisz instrukcję, która zwraca nazwę klienta (kl_nazwa) z tabeli Klienci i numery powiązanych zamówień (zam_numer) z tabeli Zamowienia.
+-- Wyniki posortuj najpierw według nazw klientów, a następnie według numerów zamówień. Wykonaj to zadanie dwuktrotnie - raz z użyciem prostej
+-- składni złączeń wewnętrznyvh i raz za pomocą składni INNER JOIN.
+SELECT kl_nazwa, zam_numer
+FROM Klienci, Zamowienia
+WHERE Klieci.kl_id = Zamowienia.kl_id
+ORDER BY kl_nazwa, zam_numer;
+-- drugie rozwiazanie
+SELECT kl_nazwa, zam_numer
+FROM Klienci
+INNER JOIN Zamowienia ON Klieci.kl_id = Zamowienia.kl_id
+ORDER BY kl_nazwa, zam_numer;
+-- 2. Do zadania pierwszego dodaj trzecią kolumnę, wartosc_zam, zawierającą łączną wartość każdego zamówienia.
+SELECT kl_nazwa, 
+     zam_numer,
+     (SELECT SUM(cena_elem*ilosc) FROM ElementyZamowienia WHERE Zamowienia.zam_numer = ElementyZamowienia.zam_numer) AS wartosc_zam
+FROM Klienci, Zamowienia
+WHERE Klieci.kl_id = Zamowienia.kl_id
+ORDER BY kl_nazwa, zam_numer;
+-- drugie rozwiazanie
+SELECT kl_nazwa, 
+     Zamowienia.zam_numer, 
+     SUM(cena_elem*ilosc) AS wartosc_zam
+FROM Klienci, Zamowienia, ElementyZamowienia
+WHERE Klieci.kl_id = Zamowienia.kl_id 
+     AND Zamowienia.zam_numer = ElementyZamowienia.zam_numer
+GROUP BY kl_nazwa, Zamowienia.zam_numer
+ORDER BY kl_nazwa, Zamowienia.zam_numer;
+-- 3. Napisz instrukcję, która pobiera daty zamówienia produktu BR01 oraz zwracaidentyfikator klienta (kl_id). Użyj złączenia i prostej składni 
+-- złączeń wewnętrznych.
+SELECT kl_id, zam_data
+FROM Zamowienia, ElementyZamowienia
+WHERE Zamowienia.zam_numer = ElementyZamowienia.zam_numer
+     AND prod_id ='BR01'
+ORDER BY zam_data;
+-- 4. Napisz instrukcje zwracającą e-maile (kl_email z tabeli Klienci) wszystkich klientów, którzy zakupili produkty o identyfikatorze 
+-- (prod_id) BR01. Użyj składni ANSI INNER JOIN.
+SELECT kl_email
+FROM Klienci
+INNER JOIN Zamowienia ON Zamowienia.kl_id = Klienci.kl_id
+INNER JOIN ElementyZamowienia ON Zamowienia.zam_numer = ElementyZamowienia.zam_numer
+WHERE prod_id = 'BR01';
+-- 5. Napisz instrukcję, która za pomocą złączeń zwraca nazwy klientów (kl_nazwa) z tabeli Klienci i wartości ich zamówień z tabeli
+-- ElementyZamowienia, dla zamówień o wartości równej 1000 lub więcej.
+SELECT kl_nazwa, SUM(cena_elem*ilosc) AS wydatki_razem
+FROM Klinci, Zamowienia, ElementyZamowienia
+WHERE Klieci.kl_id = Zamowienia.kl_id 
+     AND Zamowienia.zam_numer = ElementyZamowienia.zam_numer
+GROUP BY kl_nazwa
+HAVING  SUM(cena_elem*ilosc) >= 1000
+ORDER BY kl_nazwa;
+-- drugie rozwiazanie
+SELECT kl_nazwa, SUM(cena_elem*ilosc) AS wydatki_razem
+FROM Klinci
+INNER JOIN Zamowienia ON Klieci.kl_id = Zamowienia.kl_id 
+INNER JOIN ElementyZamowienia ON Zamowienia.zam_numer = ElementyZamowienia.zam_numer
+GROUP BY kl_nazwa
+HAVING  SUM(cena_elem*ilosc) >= 1000
+ORDER BY kl_nazwa;
