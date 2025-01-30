@@ -397,3 +397,19 @@ VALUES (1000000042, 'Zabawne zabawki', '123 Cicha', 'Miasteczko', 'MAL', 'PL', '
 -- 2. Utwórz kopie zapasowe tabel Zamowienia i ElementyZamowienia
 CREATE TABLE ZamowieniaKopia AS SELECT * FROM Zamowienia;
 CREATE TABLE ElementyZamowieniaKopia AS SELECT * FROM ElementyZamowienia;
+
+-- **********************************************
+--   Rozdział 16 Aktualizacja i usuwanie danych 
+-- **********************************************
+
+-- 1. Napisz instrukcję, która modyfikuje wszystkie adresy z Polski- zarówno pole dost_woj w tabeli Dostawcy, jak i pole kl_woj w tabeli Klienci
+-- tak aby sktóry nazw województw były zapisane wielkimi litarami.
+UPDATE Dostawcy
+SET dost_woj = UPPER(dost_woj)
+WHERE dost_kraj = 'PL';
+UPDATE Klienci
+SET kl_woj = UPPER(kl_woj)
+WHERE kl_kraj = 'PL';
+-- 2. Usuń dane dodane zadaniu 3 rozdziału 15.
+DELETE Klienci
+WHERE kl_id = 1000000042;
