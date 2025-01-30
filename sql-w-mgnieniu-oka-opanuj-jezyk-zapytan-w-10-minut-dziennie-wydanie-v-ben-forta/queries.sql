@@ -386,3 +386,14 @@ ORDER BY prod_nazwa;
             WHERE kl_qoj = 'IL' ORDER BY kl_nazwa; */
 -- Średnik po pierwszej instrukcji SELECT nie powinien się tam znaleźć, ponieważ kończy instrukcję. Ponadto można użyć tylko jednej klauzuli
 -- ORDER BY i musi się ona znajdować po ostatniej instrukcji SELECT.
+
+-- ****************************************
+--   Rozdział 15 Wstawianie danych  
+-- ****************************************
+
+-- 1. Używając instrukcji INSERT i dostępnych kolumn, dodaj swoje dane do tabeli Klienci. Bezpośredno podaj dadawae kolumny.
+INSERT INTO Klienci (kl_id, kl)nazwa, kl_adres, kl_miasto. kl_woj, kl_kraj, kl_email)
+VALUES (1000000042, 'Zabawne zabawki', '123 Cicha', 'Miasteczko', 'MAL', 'PL', 'zabawki@poczta.pl');
+-- 2. Utwórz kopie zapasowe tabel Zamowienia i ElementyZamowienia
+CREATE TABLE ZamowieniaKopia AS SELECT * FROM Zamowienia;
+CREATE TABLE ElementyZamowieniaKopia AS SELECT * FROM ElementyZamowienia;
