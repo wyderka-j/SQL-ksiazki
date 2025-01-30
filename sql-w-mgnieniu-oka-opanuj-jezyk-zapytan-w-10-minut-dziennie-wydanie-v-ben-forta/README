@@ -155,3 +155,8 @@ Rozdział 15 Wstawianie danych
 ****************************************
 1. Używając instrukcji INSERT i dostępnych kolumn, dodaj swoje dane do tabeli Klienci. Bezpośredno podaj dadawae kolumny.
 2. Utwórz kopie zapasowe tabel Zamowienia i ElementyZamowienia
+
+**********************************************
+ 1. Napisz instrukcję, która modyfikuje wszystkie adresy z Polski- zarówno pole dost_woj w tabeli Dostawcy, jak i pole kl_woj w tabeli Klienci
+  tak aby sktóry nazw województw były zapisane wielkimi litarami.
+2. Usuń dane dodane zadaniu 3 rozdziału 15.
