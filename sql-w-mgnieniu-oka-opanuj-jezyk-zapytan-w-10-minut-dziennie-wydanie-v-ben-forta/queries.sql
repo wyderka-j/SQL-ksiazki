@@ -346,3 +346,43 @@ ORDER BY prod_nazwa;
 SELECT d.dost_id, COUNT(prod_id)
 FROM Dostawcy d
 LEFT OUTER JOIN Produkty p ON d.dost_id = p.dost_id;
+
+-- ************************************
+--   Rozdział 14 Łączenie zapytań 
+-- ************************************
+
+-- 1. Napisz unstrukcję, która obejmuje dwie instrukcje SELECT pobierające identyfikator produktu (prod_id) i ilosc z tabeli ElementyZamowienia.
+-- Filtrowanie w jednej instrukcji SELECT ma zwracać tylko wiersze z kolumną ilosc równą 100, a w drugiej wiersze z produktami o identyfikatorze
+-- rozpoczynającym się od liter BNBG. Wyniki posortuj według identyfikatorów produktów.
+SELECT prod_id, ilosc
+FROM ElementyZamowienia
+WHERE ilosc = 100
+UNION
+SELECT prod_id, ilosc
+FROM ElementyZamowienia
+WHERE prod_id LIKE 'BNBG%'
+ORDER BY prod_id;
+-- 2. Zmodyfikuj instrukcję z zadania 1, używając tylko jednej instrukcji SELECT.
+SELECT prod_id, ilosc
+FROM ElementyZamowienia
+WHERE ilosc = 100 OR prod_id LIKE 'BNBG%'
+ORDER BY prod_id;
+-- 3. Napisz instrukcję, która zwraca i łączy nazwę produktu (prod_nazna) z tabeli Produkty i nazwę klienta (kl_nazwa) z tabeli Klienci. 
+-- Wynik posortuj po nazwie produktów.
+SELECT prod_nazwa
+FROM Produkty
+UNION
+SELECT kl_nazwa
+FROM Klienci
+ORDER BY prod_nazwa;
+-- 4. Jaki błąd znajduje się w poniższej instrukcji?
+     /*     SELECT kl_nazwa, kl_kontakt, kl_email
+            FROM Klienci
+            Where kl_woj = 'MI'
+            ORDER BY kl_nazwa;
+            UNION
+            SELECT kl_nazwa, kl_kontakt, kl_email
+            FROM Klienci
+            WHERE kl_qoj = 'IL' ORDER BY kl_nazwa; */
+-- Średnik po pierwszej instrukcji SELECT nie powinien się tam znaleźć, ponieważ kończy instrukcję. Ponadto można użyć tylko jednej klauzuli
+-- ORDER BY i musi się ona znajdować po ostatniej instrukcji SELECT.
