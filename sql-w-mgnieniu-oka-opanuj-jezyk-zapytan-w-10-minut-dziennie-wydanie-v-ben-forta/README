@@ -132,3 +132,21 @@ Rozdział 13 Tworzenie zaawansowanych złączeń
 4. Zmodyfikuj instrukcję z zadania 3 tak, aby zwracała łączną liczbę zamówień każdego produktu (zamiast numerów zamówień).
 5. Napisz instrukcję która wyświetla dostawców (dost_id z tabeli Dostawcy) i liczbę produktów oferowanych przez każdego z nich. Należy także
   pokazać dostawców, którzy nie oferują żadnych produktów.
+
+Rozdział 14 Łączenie zapytań 
+*********************************
+1. Napisz unstrukcję, która obejmuje dwie instrukcje SELECT pobierające identyfikator produktu (prod_id) i ilosc z tabeli ElementyZamowienia.
+  Filtrowanie w jednej instrukcji SELECT ma zwracać tylko wiersze z kolumną ilosc równą 100, a w drugiej wiersze z produktami o identyfikatorze
+  rozpoczynającym się od liter BNBG. Wyniki posortuj według identyfikatorów produktów.
+2. Zmodyfikuj instrukcję z zadania 1, używając tylko jednej instrukcji SELECT.
+3. Napisz instrukcję, która zwraca i łączy nazwę produktu (prod_nazna) z tabeli Produkty i nazwę klienta (kl_nazwa) z tabeli Klienci. 
+  Wynik posortuj po nazwie produktów.
+4. Jaki błąd znajduje się w poniższej instrukcji?
+            SELECT kl_nazwa, kl_kontakt, kl_email
+            FROM Klienci
+            Where kl_woj = 'MI'
+            ORDER BY kl_nazwa;
+            UNION
+            SELECT kl_nazwa, kl_kontakt, kl_email
+            FROM Klienci
+            WHERE kl_qoj = 'IL' ORDER BY kl_nazwa;
