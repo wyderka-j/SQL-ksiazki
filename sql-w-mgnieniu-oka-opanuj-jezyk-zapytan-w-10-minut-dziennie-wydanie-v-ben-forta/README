@@ -150,3 +150,8 @@ Rozdział 14 Łączenie zapytań
             SELECT kl_nazwa, kl_kontakt, kl_email
             FROM Klienci
             WHERE kl_qoj = 'IL' ORDER BY kl_nazwa;
+
+Rozdział 15 Wstawianie danych  
+****************************************
+1. Używając instrukcji INSERT i dostępnych kolumn, dodaj swoje dane do tabeli Klienci. Bezpośredno podaj dadawae kolumny.
+2. Utwórz kopie zapasowe tabel Zamowienia i ElementyZamowienia
