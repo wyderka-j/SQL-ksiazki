@@ -413,3 +413,15 @@ WHERE kl_kraj = 'PL';
 -- 2. Usuń dane dodane zadaniu 3 rozdziału 15.
 DELETE Klienci
 WHERE kl_id = 1000000042;
+
+-- ********************************************
+--   Rozdział 17 Tworzenie i modyfikacja tabel 
+-- ********************************************
+
+-- 1. Dodaj kolumnę z adresem witryny (dost_witryna) do tabeli Dostawcy. Potrzebne jest pole tekstowe wystarczająco długie, aby zmieścić adres URL.
+ALTER TABLE Dostawcy
+ADD dost_witryna CHAR(100);
+-- 2. Użyj instrukcji UPDATE aby zmodyfikować rekordy z tabeli Dostawcy i dodać do niego adres dowolnej witryny. 
+UPDATE Dostawcy
+SET dost_witryna = 'https://google.com'
+WHERE dost_id = 'DLL01';
