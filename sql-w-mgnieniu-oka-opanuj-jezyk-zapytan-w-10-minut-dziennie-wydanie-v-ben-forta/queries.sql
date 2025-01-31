@@ -425,3 +425,32 @@ ADD dost_witryna CHAR(100);
 UPDATE Dostawcy
 SET dost_witryna = 'https://google.com'
 WHERE dost_id = 'DLL01';
+
+-- ****************************************
+--   Rozdział 18 Stosowanie perspektyw   
+-- ****************************************
+
+-- 1. Utwórz perspektywę KlienciZZamowieniami zawierającą wszystkie kolumny z tabeli Klienci, ale obejmującą tylko wiersze klientów, którzy złożyli
+-- jakieś zamówienia.
+CREATE VIEW KlienciZZamowieniami AS
+SELECT k.kl_id,
+       k.kl_nazwa,
+       k.kl_adres,
+       k.kl_miasto,
+       k.kl_woj,
+       k.kl_kod,
+       k.kl_kraj,
+       k.kl_kontakt,
+       k.kl_email
+FROM Klienci k
+JOIN Zamowienia z ON k.kl_id = z.kl_id;
+-- 2. Jaki błąd znajduje się w poniższej instrukcji?
+     /*     CREATE VIEW ElementyZamowieniaRozszerzona AS
+            SELECT zam_numer,
+                    prod_id,
+                    ilosc,
+                    cena_elem,
+                    ilosc*cena_elem AS cena_lacznie
+            FROM ElementyZamowienia
+            ORDER BY zam_numer;     */
+-- W widokach nie można stosować klauzuli ORDER BY.
