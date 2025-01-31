@@ -166,3 +166,17 @@ Rozdział 17 Tworzenie i modyfikacja tabel
 ********************************************
 1. Dodaj kolumnę z adresem witryny (dost_witryna) do tabeli Dostawcy. Potrzebne jest pole tekstowe wystarczająco długie, aby zmieścić adres URL.
 2. Użyj instrukcji UPDATE aby zmodyfikować rekordy z tabeli Dostawcy i dodać do niego adres dowolnej witryny. 
+
+Rozdział 18 Stosowanie perspektyw   
+****************************************
+1. Utwórz perspektywę KlienciZZamowieniami zawierającą wszystkie kolumny z tabeli Klienci, ale obejmującą tylko wiersze klientów, którzy złożyli
+  jakieś zamówienia.
+2. Jaki błąd znajduje się w poniższej instrukcji?
+            CREATE VIEW ElementyZamowieniaRozszerzona AS
+            SELECT zam_numer,
+                    prod_id,
+                    ilosc,
+                    cena_elem,
+                    ilosc*cena_elem AS cena_lacznie
+            FROM ElementyZamowienia
+            ORDER BY zam_numer;
